@@ -2,6 +2,18 @@
 .SH NAME
 x \- tools for dealing with alien systems
 .SH SYNOPSIS
+.PP
+.B x/mnt
+.I [user@]host
+.PP
+.B x/run
+.RB [ -l ]
+.I cmd
+.PP
+.B x/man
+.RI [ section ] title
+.PP
+.B x/path
 .SH DESCRIPTION
 .PP
 .I X
@@ -40,12 +52,50 @@ started somewhere convenient, perhaps in your profile:
 .EE
 .SH COMMANDS
 .PP
-.I x/mnt
+.B x/mnt
+is a convenience wrapper around
+.IR sshfs (4)
+that connects to and mounts the remote
+.I host
+as 
+.I user
+to the appropriate place as discussed above.
+If
+.I user
+is missing,
+.B x/mnt
+tries the mount as both the invoking user and as
+.I root.
+
 .PP
-.I x/run
+.B x/run
+uses
+.B ssh(1)
+to connect to and run the
+.I cmd
+on the system suggested by the current path;
+.B cd(1)
+will be prepended to the command to execute it in the correct
+context.  For example, given the current directory
+.B /x/me@moskvax/home/me/prog
+the command
+.B x/run make
+will run
+.B make(1)
+in the expected corresponding directory.
+
 .PP
-.I x/man
+.B x/man
+
+.PP
+.B x/path
+
 .SH EXAMPLES
 .SH SEE ALSO
+.IR ssh (1),
+.IR mntgen (4),
+.IR sshfs (4)
 .SH SOURCE
+.B git://code.a-b.xyz/x
 .SH BUGS
+Mhm.
