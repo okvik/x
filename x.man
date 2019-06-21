@@ -1,0 +1,51 @@
+.TH X 1
+.SH NAME
+x \- tools for dealing with alien systems
+.SH SYNOPSIS
+.SH DESCRIPTION
+.PP
+.I X
+is a collection of programs that tries to enable convenient
+interaction with alien systems of the UNIX® variety from the
+extreme comfort of Plan 9.
+.PP
+These programs rely on the namespace convention whereupon the
+root hierarchy of the remote system to be interacted with is
+mounted, usually through
+.IR sshfs (4),
+at the
+.IR mntgen (4)
+provided mountpoint under
+.I /x
+named after the
+.B user@host
+login tuple used to mount the system.
+.PP
+In this way the working directory of a program is loaded with
+two bits of information about the remote system: the login
+that can be used to access it, and the path relative to the
+remote root - which are exploited by the programs described
+here to provide some further convenience.
+.SH SETUP
+.PP
+Create the
+.I /x
+directory on your root file server and make sure to have the
+.IR mntgen (4)
+started somewhere convenient, perhaps in your profile:
+.EX
+; mount -c /srv/boot /n/boot
+; mkdir /x
+; mntgen /x
+.EE
+.SH COMMANDS
+.PP
+.I x/mnt
+.PP
+.I x/run
+.PP
+.I x/man
+.SH EXAMPLES
+.SH SEE ALSO
+.SH SOURCE
+.SH BUGS
