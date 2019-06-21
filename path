@@ -1,0 +1,19 @@
+#!/bin/rc
+# x/path -- extract datums from the path
+rfork e
+wd=`{pwd}
+if(! ~ $wd /x/*)
+	exit notinx
+while(! ~ $#1 0 && ~ $1 -*){
+	switch($1){
+	case -P
+		echo $wd | sed 's,/x/[^/]+(.*),\1,'
+	case -p
+		echo $wd | sed 's,/x/[^/]+/(.*),\1,'
+	case -r
+		echo $wd | sed 's,(/x/[^/]+).*,\1,'
+	case -l
+		echo $wd | awk -F/ '{print $3}'
+	}
+	shift
+}
