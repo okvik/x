@@ -82,13 +82,36 @@ the command
 .B x/run make
 will run
 .B make(1)
-in the expected corresponding directory.
+in the expected remote directory.
 
 .PP
 .B x/man
+is a shortcut for displaying the manual pages from the remote
+systems.
+By default the manual pages are printed to the
+standard output; the option
+.I -p
+changes this to redirect the output into a temporary file
+.B /tmp/man/$title.$section.txt
+which is then plumbed for viewing in an editor.
 
 .PP
 .B x/path
+extracts and prints the information contained in the current
+working path, it is used to implement other programs and can
+be used in your own scripts.  The options are as follows:
+.TF "-o option"
+.TP
+.I -l
+prints the login, i.e. the user@host string that can be used
+to connect to the remote system.
+.TP
+.IR -P , -p
+print the absolute (relative) path relative to the remote
+root.
+.TP
+.I -r
+prints the local path to the root of the remote hierarchy.
 
 .SH EXAMPLES
 .SH SEE ALSO
