@@ -1,0 +1,6 @@
+#!/bin/rc
+rfork e
+rpath=`{x/path -P}
+cmd=$"*
+cmd=`{awk 'BEGIN{printf("sh -c ''cd %s; %s''", ENVIRON["rpath"], ENVIRON["cmd"])}'}
+ssh `{x/path -l} $"cmd
