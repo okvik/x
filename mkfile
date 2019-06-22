@@ -1,6 +1,6 @@
 BIN=$home/bin/rc
 MAN=/sys/man/1
-RC=path run
+RC=path run mnt man
 
 install:V: $MAN/x rc
 
@@ -9,7 +9,7 @@ $MAN/x: x.man
 
 rc:V:
 	mkdir -p $BIN/x
-	for(f in $RC) cp $f $BIN
+	for(f in $RC) cp $f $BIN/x
 
 uninstall:V:
 	rm -rf $BIN/x
