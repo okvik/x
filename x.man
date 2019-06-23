@@ -59,7 +59,7 @@ started somewhere convenient, perhaps in your profile:
 .B x/mnt
 is a convenience wrapper around
 .IR sshfs (4)
-that connects to and mounts the remote
+that mounts the remote
 .I host
 as 
 .I user
@@ -88,11 +88,17 @@ on the system suggested by the current path;
 will be prepended to the command to execute it in the correct
 context.  For example, given the current directory
 .B /x/me@moskvax/home/me/prog
-the command
+running
 .B x/run make
-will run
+will execute
 .B make(1)
-in the expected remote directory.
+as user
+.I me
+on system
+.I moskvax
+in the
+.B /home/me/prog
+directory.
 
 .PP
 .B x/man
@@ -107,9 +113,10 @@ which is then plumbed for viewing in an editor.
 
 .PP
 .B x/path
-extracts and prints the information contained in the current
-working path, it is used to implement other programs and can
-be used in your own scripts.  The options are as follows:
+extracts and prints the information embedded in the current
+working directory path, it is used to implement programs
+described here and can be used in your own scripts.  The
+options are as follows:
 .TF "-o option"
 .TP
 .I -l
