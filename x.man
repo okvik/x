@@ -55,7 +55,7 @@ directory on your root file server and make sure to have the
 started somewhere convenient, perhaps in your profile:
 .EX
 ; mount -c /srv/boot /n/boot
-; mkdir /x
+; mkdir /n/boot/x
 ; mntgen /x
 .EE
 .SH COMMANDS
