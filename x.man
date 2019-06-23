@@ -18,6 +18,10 @@ x \- tools for dealing with alien systems
 .RI [ section ] title
 .PP
 .B x/path
+.B -lpPr
+[
+.I path
+]
 .SH DESCRIPTION
 .PP
 .I X
@@ -113,10 +117,10 @@ which is then plumbed for viewing in an editor.
 
 .PP
 .B x/path
-extracts and prints the information embedded in the current
-working directory path, it is used to implement programs
-described here and can be used in your own scripts.  The
-options are as follows:
+extracts and prints the information embedded in the pathname
+of the working directory or the one given as the last
+argument.
+The options are as follows:
 .TF "-o option"
 .TP
 .I -l
