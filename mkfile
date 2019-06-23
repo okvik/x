@@ -1,6 +1,6 @@
 BIN=$home/bin/rc
 MAN=/sys/man/1
-RC=path run mnt man
+RC=path run mnt
 
 install:V: $MAN/x rc
 
