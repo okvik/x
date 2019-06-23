@@ -3,14 +3,14 @@
 rfork e
 
 fn usage {
-	echo usage: x/mnt [user@]host >[1=2]
+	echo usage: x/mnt [[user@]host] >[1=2]
 	exit usage
 }
 
 users=(root $user)
-if(! ~ $#* 1)
-	usage
 host=$1
+if(~ $host '')
+	host=`{x/path -l}
 if(~ $host *@*){
 	x=`'@'{echo -n $host}
 	users=$x(1)

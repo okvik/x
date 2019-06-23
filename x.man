@@ -4,7 +4,11 @@ x \- tools for dealing with alien systems
 .SH SYNOPSIS
 .PP
 .B x/mnt
-.I [user@]host
+[ [
+.I user@
+]
+.I host
+]
 .PP
 .B x/run
 .RB [ -l ]
@@ -66,6 +70,12 @@ is missing,
 .B x/mnt
 tries the mount as both the invoking user and as
 .I root.
+If both the
+.I user
+and
+.I host
+are missing, it attempts to mount the system suggested by the
+current working directory.
 
 .PP
 .B x/run
