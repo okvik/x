@@ -1,11 +1,14 @@
 #!/bin/rc
 # x/path -- extract datums from the path
 rfork e
-wd=`{pwd}
+if(! ~ $$#* -*)
+	wd=$$#*
+if not
+	wd=`{pwd}
 if(! ~ $wd /x/*)
 	exit notinx
-while(! ~ $#1 0 && ~ $1 -*){
-	switch($1){
+for(arg){
+	switch($arg){
 	case -P
 		echo $wd | sed 's,/x/[^/]+(.*),\1,'
 	case -p
