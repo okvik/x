@@ -11,6 +11,8 @@ users=(root $user)
 host=$1
 if(~ $host '')
 	host=`{x/path -l}
+if(~ $host '')
+	usage
 if(~ $host *@*){
 	x=`'@'{echo -n $host}
 	users=$x(1)
