@@ -24,3 +24,4 @@ for(u in $users){
 		sshfs -M -r / -s $userhost $userhost
 	mount -c /srv/$userhost /x/$userhost
 }
+
