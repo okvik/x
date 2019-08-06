@@ -1,0 +1,10 @@
+#!/bin/rc
+rpath=`{x/path -P}
+cmd=`{awk 'BEGIN{
+	x = ENVIRON["*"]
+	if(length(x) == 0)
+		x = "$SHELL"
+	printf("$SHELL -c ''cd %s; %s''",
+		ENVIRON["rpath"], x)
+}'}
+vt ssh -r `{x/path -l} $"cmd

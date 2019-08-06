@@ -14,6 +14,9 @@ x \- tools for dealing with alien systems
 .RB [ -l ]
 .I cmd
 .PP
+.B x/vt
+.RB [ cmd ]
+.PP
 .B x/man
 .RI [ section ] title
 .PP
@@ -105,6 +108,18 @@ in the
 directory.
 
 .PP
+.B x/vt
+is similar to
+.B x/run
+except the
+.I cmd
+is run under the
+.IR vt (1)
+legacy teletype environment. If the
+.I cmd
+is missing a user's interactive $SHELL will be run.
+
+.PP
 .B x/man
 is a shortcut for displaying the manual pages from the remote
 systems.
@@ -137,6 +152,7 @@ prints the local path to the root of the remote hierarchy.
 .SH EXAMPLES
 .SH SEE ALSO
 .IR ssh (1),
+.IR vt (1),
 .IR mntgen (4),
 .IR sshfs (4)
 .SH SOURCE
