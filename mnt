@@ -1,0 +1,32 @@
+#!/bin/rc
+
+rfork e
+
+fn usage {
+	echo usage: x/mnt [[user@]host ...] >[1=2]
+	exit usage
+}
+
+fn mnt {
+	user=(root $user)
+	host=$1
+	if(~ $host *@*){
+		x=`'@'{echo -n $host}
+		user=$x(1)
+		host=$x(2)
+	}
+	for(u in $user){
+		userhost=$u@$host
+		if(! test -e /srv/$userhost)
+			sshfs -M -r / -s $userhost $userhost
+		mount -c /srv/$userhost /x/$userhost
+	}
+}
+
+hosts=$*
+if(~ $#hosts 0)
+	hosts=`{x/path -l}
+if(~ $#hosts 0)
+	usage
+for(h in $hosts)
+	mnt $h
