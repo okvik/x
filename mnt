@@ -18,7 +18,7 @@ fn mnt {
 	for(u in $user){
 		userhost=$u@$host
 		mount -c /srv/$userhost /x/$userhost >[2]/dev/null \
-		|| sshfs -M -r / -s $userhost $userhost
+		|| sshfs -s $userhost -m /x/$userhost -r / $userhost
 	}
 }
 
