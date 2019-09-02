@@ -5,16 +5,14 @@ if(! ~ $$#* -*)
 	wd=$$#*
 if not
 	wd=`{pwd}
-if(! ~ $wd /x/*)
-	exit notinx
 for(arg){
 	switch($arg){
 	case -P
-		echo $wd | sed 's,/x/[^/]+(.*),\1,'
+		echo $wd | sed 's,/[^/]+/[^/]+(.*),\1,'
 	case -p
-		echo $wd | sed 's,/x/[^/]+/(.*),\1,'
+		echo $wd | sed 's,/[^/]+/[^/]+/(.*),\1,'
 	case -r
-		echo $wd | sed 's,(/x/[^/]+).*,\1,'
+		echo $wd | sed 's,(/[^/]+/[^/]+).*,\1,'
 	case -l
 		echo $wd | awk -F/ '{print $3}'
 	}
