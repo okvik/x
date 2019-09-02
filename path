@@ -14,7 +14,7 @@ for(arg){
 	case -r
 		echo $wd | sed 's,(/[^/]+/[^/]+).*,\1,'
 	case -l
-		echo $wd | awk -F/ '{print $3}'
+		echo $wd | awk -F/ '{if($3) print $3; else print $0}'
 	}
 	shift
 }
