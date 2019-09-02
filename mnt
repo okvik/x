@@ -28,4 +28,4 @@ if(~ $#hosts 0)
 if(~ $#hosts 0)
 	usage
 for(h in $hosts)
-	mnt $h
+	mnt `{x/path -l $h}
