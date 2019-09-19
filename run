@@ -1,8 +1,15 @@
 #!/bin/rc
 rfork e
+flags=()
+while(! ~ $#* 0 && ~ $1 -* && ! ~ $1 --){
+	flags=($flags $1)
+	shift
+}
+if(~ $1 --)
+	shift
 rpath=`{x/path -P}
 cmd=`{awk 'BEGIN{
-	printf("$SHELL -c ''cd %s; %s''",
-		ENVIRON["rpath"], ENVIRON["*"])
+	printf("$SHELL %s -c ''cd %s; %s''",
+		ENVIRON["flags"], ENVIRON["rpath"], ENVIRON["*"])
 }'}
 ssh `{x/path -l} $"cmd
