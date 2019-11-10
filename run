@@ -7,9 +7,11 @@ while(! ~ $#* 0 && ~ $1 -* && ! ~ $1 --){
 }
 if(~ $1 --)
 	shift
-rpath=`{x/path -P}
-cmd=`{awk 'BEGIN{
-	printf("$SHELL %s -c ''cd %s; %s''",
-		ENVIRON["flags"], ENVIRON["rpath"], ENVIRON["*"])
-}'}
-ssh `{x/path -l} $"cmd
+
+{
+	echo cd `{x/path -P}
+	if(! grep -s '/dev/cons' /fd/0ctl)
+		cat
+	if not
+		echo $"*
+}| ssh $flags `{x/path -l}
