@@ -1,7 +1,7 @@
 #!/bin/rc
 rfork e
 flags=()
-while(! ~ $#* 0 && ~ $1 -* && ! ~ $1 --){
+while(~ $1 -* && ! ~ $1 --){
 	flags=($flags $1)
 	shift
 }
