@@ -1,0 +1,29 @@
+#!/bin/rc
+# x/man -- print manual pages from remote systems
+rfork e
+
+flags=()
+section=()
+width=72
+
+fn usage {
+	echo usage: x/man [flags] [section] title ...
+	exit usage
+}
+
+while(! ~ $#* 0 && ~ $1 -* && ! ~ $1 --){
+	flags=($flags $1)
+	shift
+}
+if(~ $1 --)
+	shift
+if(~ $#* 0)
+	usage
+if(echo $1 | grep -s '^[0-9][0-9A-Za-z]*'){
+	section=$1
+	shift
+}
+if(~ $#section 0)
+	x/run 'MANWIDTH='$width man $flags $*
+if not
+	x/run 'MANWIDTH='$width man $flags -s $section $*
