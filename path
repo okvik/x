@@ -1,6 +1,10 @@
 #!/bin/rc
-# x/path -- extract datums from the path
 rfork e
+. /sys/lib/x/lib.rc
+usage = '
+	x/path [-Pprl]
+'
+
 if(! ~ $$#* -*)
 	wd=$$#*
 if not

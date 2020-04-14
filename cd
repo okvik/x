@@ -1,2 +1,8 @@
 #!/bin/rc
+rfork e
+. /sys/lib/x/lib.rc
+usage = '
+	x/cd
+'
+
 echo cd `{x/path -r}

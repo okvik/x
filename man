@@ -1,16 +1,12 @@
 #!/bin/rc
-# x/man -- print manual pages from remote systems
 rfork e
+. /sys/lib/x/lib.rc
+usage = '
+	x/man [-b] [man-flags] [section] title
+'
 
 flags=()
-section=()
 width=72
-
-fn usage {
-	>[1=2] echo usage: x/man [-b] [man-flags] [section] title
-	exit usage
-}
-
 out='stdout'
 section=()
 title=()

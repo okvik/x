@@ -1,4 +1,10 @@
 #!/bin/rc
+rfork e
+. /sys/lib/x/lib.rc
+usage = '
+	x/vt [command]
+'
+
 rpath=`{x/path -P}
 cmd=`{awk 'BEGIN{
 	x = ENVIRON["*"]

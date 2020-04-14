@@ -1,5 +1,10 @@
 #!/bin/rc
 rfork e
+. /sys/lib/x/lib.rc
+usage = '
+	x/run [ssh-flags] command
+'
+
 flags=()
 while(~ $1 -* && ! ~ $1 --){
 	flags=($flags $1)

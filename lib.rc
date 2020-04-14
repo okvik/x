@@ -1,0 +1,9 @@
+fn die {
+	>[1=2] echo $0: $*
+	exit $"*
+}
+
+fn usage {
+	>[1=2] echo -n 'usage:' $usage
+	exit 'usage'
+}
