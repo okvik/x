@@ -18,7 +18,10 @@ x \- tools for dealing with alien systems
 .RB [ cmd ]
 .PP
 .B x/man
-.RI [ section ] title
+.RI [ -b ]
+.RI [ man-flags ]
+.RI [ section ]
+.I title
 .PP
 .B x/path
 .B -lpPr
@@ -121,14 +124,11 @@ is missing a user's interactive $SHELL will be run.
 
 .PP
 .B x/man
-is a shortcut for displaying the manual pages from the remote
-systems.
-By default the manual pages are printed to the
-standard output; the option
-.I -p
-changes this to redirect the output into a temporary file
-.B /tmp/man/$title.$section.txt
-which is then plumbed for viewing in an editor.
+displays formatted manual pages from remote systems on its
+standard output.
+With
+.I -b
+the page is saved to a file and plumbed.
 
 .PP
 .B x/path

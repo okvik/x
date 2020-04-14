@@ -7,23 +7,53 @@ section=()
 width=72
 
 fn usage {
-	echo usage: x/man [flags] [section] title ...
+	>[1=2] echo usage: x/man [-b] [man-flags] [section] title
 	exit usage
 }
 
-while(! ~ $#* 0 && ~ $1 -* && ! ~ $1 --){
-	flags=($flags $1)
+out='stdout'
+section=()
+title=()
+while(~ $1 -* && ! ~ $1 --){
+	switch($1){
+	case -b
+		out='plumb'
+	case *
+		flags=($flags $1)
+	}
 	shift
 }
 if(~ $1 --)
 	shift
-if(~ $#* 0)
-	usage
-if(echo $1 | grep -s '^[0-9][0-9A-Za-z]*'){
-	section=$1
-	shift
+if(~ $#* 2){
+	section = $1; shift
 }
-if(~ $#section 0)
+title = $1
+if(~ $#title 0)
+	usage
+
+if(~ $out 'plumb')
+	fn output {
+		t = /tmp/xman
+		mkdir -p $t
+		col -b >$t/tmp.$pid
+		if(~ $#section 0){
+			<$t/tmp.$pid awk -F'[)(]' '
+				NR == 1 {printf($2) >"/env/section"}
+			'
+			section = `{cat /env/section}
+		}
+		if(~ $#section 0)
+			section = ''
+		mkdir -p $t/$section
+		mv $t/tmp.$pid $t/$section/$title
+		plumb $t/$section/$title
+	}
+if not
+	fn output {col -b}
+
+{if(~ $#section 0)
 	x/run 'MANWIDTH='$width man $flags $*
 if not
 	x/run 'MANWIDTH='$width man $flags -s $section $*
+}| output
