@@ -2,6 +2,9 @@ BIN=$home/bin/rc
 MAN=/sys/man/1
 RC=path run mnt cd man vt
 
+all:VQ:
+	echo 'An unsightly package appears: "Meal, Mk-install-to-Eat."'
+
 install:V: $MAN/x rc
 
 $MAN/x: x.man
