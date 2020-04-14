@@ -53,7 +53,7 @@ if not
 	fn output {col -b}
 
 {if(~ $#section 0)
-	x/run 'MANWIDTH='$width man $flags $*
+	x/run 'MANWIDTH='$width man $flags $title
 if not
-	x/run 'MANWIDTH='$width man $flags -s $section $*
+	x/run 'MANWIDTH='$width man $flags -s $section $title
 }| output
