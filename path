@@ -10,6 +10,8 @@ if(! ~ $$#* -*)
 if not
 	wd=`{pwd}
 wd=`{cleanname $wd}
+if(! ~ $wd /x/*)
+	exit 'invalid path'
 for(arg){
 	switch($arg){
 	case -P
